@@ -91,30 +91,30 @@ class DeviceInfoFetcher: ObservableObject {
         }
         
         for line in lines {
-            // Split fields by ", "
-            let parts = line.components(separatedBy: ", ")
-            guard parts.count >= 6 else { continue }
+            let pattern = #"address: ([^,]+), (connected[^,]*(?:\([^)]+\))?|not connected), (not favourite|favourite), (paired|not paired), name: "([^"]+)", recent access date: (.+)"#
             
-            // address
-            guard parts[0].hasPrefix("address: ") else { continue }
-            let address = String(parts[0].dropFirst("address: ".count))
+            guard let regex = try? NSRegularExpression(pattern: pattern, options: []),
+                  let match = regex.firstMatch(in: line, options: [], range: NSRange(line.startIndex..., in: line)),
+                  match.numberOfRanges == 7 else {
+                continue
+            }
             
-            // name
-            guard parts[4].hasPrefix("name: ") else { continue }
-            var name = String(parts[4].dropFirst("name: ".count))
-            // Trim surrounding quotes if present
-            name = name.trimmingCharacters(in: CharacterSet(charactersIn: "\""))
+            let address = String(line[Range(match.range(at: 1), in: line)!])
+            let connectStatus = String(line[Range(match.range(at: 2), in: line)!])
+            let favoriteStatus = String(line[Range(match.range(at: 3), in: line)!])
+            let pairedStatus = String(line[Range(match.range(at: 4), in: line)!])
+            let name = String(line[Range(match.range(at: 5), in: line)!])
+            let dateString = String(line[Range(match.range(at: 6), in: line)!])
             
-            // recent access date
-            guard parts[5].hasPrefix("recent access date: ") else { continue }
-            let dateString = String(parts[5].dropFirst("recent access date: ".count))
-            guard let date = formatter.date(from: dateString) else { continue }
+            guard let date = formatter.date(from: dateString) else {
+                continue
+            }
             
             let device = DeviceInfo(
                 address: address,
-                connect_status: parts[1],
-                favorite_status: parts[2],
-                paired_status: parts[3],
+                connect_status: connectStatus,
+                favorite_status: favoriteStatus,
+                paired_status: pairedStatus,
                 name: name,
                 recent_access_date: date
             )

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		261BE46A2EE1C38000214DD6 /* DeviceInfoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261BE4692EE1C38000214DD6 /* DeviceInfoRow.swift */; };
+		261BE46E2EE1CFA400214DD6 /* AudioMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261BE46D2EE1CFA400214DD6 /* AudioMonitor.swift */; };
+		261BE4702EE1CFD300214DD6 /* Switcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261BE46F2EE1CFD300214DD6 /* Switcher.swift */; };
+		261BE4732EE1D04E00214DD6 /* GluedDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261BE4722EE1D04E00214DD6 /* GluedDevice.swift */; };
 		26BFD7B22EE1AC0900434E90 /* GluedApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BFD7B12EE1AC0900434E90 /* GluedApp.swift */; };
 		26BFD7B42EE1AC0900434E90 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BFD7B32EE1AC0900434E90 /* ContentView.swift */; };
 		26BFD7B62EE1AC0900434E90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26BFD7B52EE1AC0900434E90 /* Assets.xcassets */; };
@@ -18,6 +21,9 @@
 
 /* Begin PBXFileReference section */
 		261BE4692EE1C38000214DD6 /* DeviceInfoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoRow.swift; sourceTree = "<group>"; };
+		261BE46D2EE1CFA400214DD6 /* AudioMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioMonitor.swift; sourceTree = "<group>"; };
+		261BE46F2EE1CFD300214DD6 /* Switcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switcher.swift; sourceTree = "<group>"; };
+		261BE4722EE1D04E00214DD6 /* GluedDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GluedDevice.swift; sourceTree = "<group>"; };
 		26BFD7AE2EE1AC0900434E90 /* Glued.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Glued.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26BFD7B12EE1AC0900434E90 /* GluedApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GluedApp.swift; sourceTree = "<group>"; };
 		26BFD7B32EE1AC0900434E90 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -47,6 +53,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		261BE4712EE1D03700214DD6 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				261BE4722EE1D04E00214DD6 /* GluedDevice.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
 		26BFD7A52EE1AC0900434E90 = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +80,7 @@
 		26BFD7B02EE1AC0900434E90 /* Glued */ = {
 			isa = PBXGroup;
 			children = (
+				261BE4712EE1D03700214DD6 /* Storage */,
 				261BE4682EE1C34900214DD6 /* Views */,
 				26BFD7C42EE1B83C00434E90 /* View Models */,
 				26BFD7C02EE1AC2200434E90 /* Models */,
@@ -98,6 +113,8 @@
 			isa = PBXGroup;
 			children = (
 				26BFD7C62EE1B88600434E90 /* DeviceInfoFetcher.swift */,
+				261BE46D2EE1CFA400214DD6 /* AudioMonitor.swift */,
+				261BE46F2EE1CFD300214DD6 /* Switcher.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -172,9 +189,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				261BE4732EE1D04E00214DD6 /* GluedDevice.swift in Sources */,
 				26BFD7B42EE1AC0900434E90 /* ContentView.swift in Sources */,
 				261BE46A2EE1C38000214DD6 /* DeviceInfoRow.swift in Sources */,
+				261BE4702EE1CFD300214DD6 /* Switcher.swift in Sources */,
 				26BFD7C72EE1B88600434E90 /* DeviceInfoFetcher.swift in Sources */,
+				261BE46E2EE1CFA400214DD6 /* AudioMonitor.swift in Sources */,
 				26BFD7B22EE1AC0900434E90 /* GluedApp.swift in Sources */,
 				26BFD7C92EE1B8BB00434E90 /* DeviceInfo.swift in Sources */,
 			);
