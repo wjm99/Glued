@@ -26,6 +26,12 @@ final class AudioMonitor {
     
     /// 上一次的 “device is running” 状态
     private var wasRunning = false
+
+    /// 为 DeviceIsRunningSomewhere 注册监听的设备 ID
+    private var runningListenerDeviceID = AudioDeviceID(0)
+
+    /// 保存用于监听 DeviceIsRunningSomewhere 的 block，方便后续移除
+    private var runningStateListenerBlock: AudioObjectPropertyListenerBlock?
     
     /// 所有 CoreAudio 回调跑在这个队列上
     private let audioQueue = DispatchQueue(label: "glued.coreaudio.queue", qos: .background)
@@ -167,24 +173,56 @@ final class AudioMonitor {
             return
         }
         
+        // 如果之前已经在某个设备上注册过监听，先移除旧的监听
+        if runningListenerDeviceID != 0,
+           let oldBlock = runningStateListenerBlock {
+            
+            var oldAddress = AudioObjectPropertyAddress(
+                mSelector: kAudioDevicePropertyDeviceIsRunningSomewhere,
+                mScope: kAudioObjectPropertyScopeGlobal,
+                mElement: kAudioObjectPropertyElementMain
+            )
+            
+            let removeStatus = AudioObjectRemovePropertyListenerBlock(
+                runningListenerDeviceID,
+                &oldAddress,
+                audioQueue,
+                oldBlock
+            )
+            
+            if removeStatus != noErr {
+                print("⚠️ Failed to remove previous running-state listener from device \(runningListenerDeviceID), status = \(removeStatus)")
+            } else {
+                print("♻️ Removed previous running-state listener from device \(runningListenerDeviceID)")
+            }
+            
+            runningListenerDeviceID = 0
+            runningStateListenerBlock = nil
+        }
+        
         var address = AudioObjectPropertyAddress(
             mSelector: kAudioDevicePropertyDeviceIsRunningSomewhere,
             mScope: kAudioObjectPropertyScopeGlobal,
             mElement: kAudioObjectPropertyElementMain
         )
         
-        let status = AudioObjectAddPropertyListenerBlock(
-            currentDeviceID,
-            &address,
-            audioQueue
-        ) { [weak self] _, _ in
+        let block: AudioObjectPropertyListenerBlock = { [weak self] _, _ in
             guard let self = self, self.isMonitoring else { return }
             self.handleRunningStateChanged()
         }
         
+        let status = AudioObjectAddPropertyListenerBlock(
+            currentDeviceID,
+            &address,
+            audioQueue,
+            block
+        )
+        
         if status != noErr {
             print("❌ Failed to register running-state listener, status = \(status)")
         } else {
+            runningListenerDeviceID = currentDeviceID
+            runningStateListenerBlock = block
             print("✅ Registered listener for DeviceIsRunningSomewhere on device \(currentDeviceID)")
         }
     }
