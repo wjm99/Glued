@@ -17,6 +17,7 @@ struct GluedApp: App {
         MenuBarExtra {
             ContentView()
                 .frame(width: 300)
+                .fixedSize(horizontal: true, vertical: false)
                 .onAppear {
                     audioMonitor.startMonitoring()
                 }
