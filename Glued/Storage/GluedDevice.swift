@@ -35,4 +35,8 @@ struct GluedDevice: Codable {
             return nil
         }
     }
+    
+    static func clear() {
+        UserDefaults.standard.removeObject(forKey: storageKey)
+    }
 }
