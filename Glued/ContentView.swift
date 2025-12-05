@@ -21,17 +21,25 @@ struct ContentView: View {
         GroupBox {
             List(fetcher.deviceinfos, id: \.address) { info in
                 DeviceInfoRow(info: info)
-                .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(
-                                selectedAddress == info.address ? Color.green : Color.clear,
-                                lineWidth: 2
-                            )
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .listRowBackground(
+                        Group {
+                            if selectedAddress == info.address {
+                                RoundedRectangle(cornerRadius: 8)
+                                    .fill(Color.blue.opacity(0.2))
+                            } else {
+                                Color.clear
+                            }
+                        }
                     )
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        selectedAddress = info.address
-                        GluedDevice.save(from: info)
+                        if selectedAddress == info.address {
+                            selectedAddress = nil
+                        } else {
+                            selectedAddress = info.address
+                            GluedDevice.save(from: info)
+                        }
                     }
                 
             }

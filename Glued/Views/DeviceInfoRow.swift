@@ -14,10 +14,10 @@ struct DeviceInfoRow: View {
     
     var body: some View {
         HStack{
-            Text(info.name)
+            Text(info.name).font(.system(.body, design: .monospaced))
             Spacer()
-            Text(info.paired_status).font(.system(.body, design: .monospaced))
         }
+        .frame(maxWidth: .infinity)
     }
 }
 
