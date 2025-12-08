@@ -26,15 +26,26 @@ class DeviceInfoFetcher: ObservableObject {
     
     func getDeviceInfo() async throws -> [DeviceInfo] {
         try await Task.detached(priority: .userInitiated) {
-            let output = try self.executeCommand(
-                "/opt/homebrew/bin/blueutil",
-                arguments: ["--paired"]
-            )
-            
-            let deviceinfo = try self.parse(output)
-            return deviceinfo
+            // 直接调用我们封装好的 BlueUtil，而不是跑 /opt/homebrew/bin/blueutil
+            let paired = BlueUtil.pairedDevices()
+
+            let now = Date() // 没有 recentAccessDate 数据，就先用当前时间占位（你可以按需求改）
+
+            let deviceInfos = paired.map { dev in
+                DeviceInfo(
+                    address: dev.address,
+                    connect_status: dev.isConnected ? "connected" : "not connected",
+                    favorite_status: "not favourite",          // IOBluetooth 没直接 favourite 概念，这里先固定
+                    paired_status: dev.isPaired ? "paired" : "not paired",
+                    name: dev.name,
+                    recent_access_date: now
+                )
+            }
+
+            return deviceInfos
         }.value
     }
+
     
     // MARK: - Command Execution
     
