@@ -33,13 +33,22 @@ final class Switcher {
         
         // 1. 连接蓝牙设备
         print("[\(timestamp)] Connecting to AirPods (\(btMac)) via blueutil...")
-        _ = executeCommand("/opt/homebrew/bin/blueutil",
-                           arguments: ["--connect", btMac])
+        do {
+                try BlueUtil.connect(id: btMac)
+                print("[\(timestamp)] ✅ Bluetooth connected successfully.")
+            } catch {
+                print("[\(timestamp)] ❌ Failed to connect via BlueUtil: \(error)")
+            }
         
         // 2. 切换默认输出设备
         print("[\(timestamp)] Switching audio output to \"\(audioDeviceName)\" via SwitchAudioSource...")
-        _ = executeCommand("/opt/homebrew/bin/SwitchAudioSource",
-                           arguments: ["-s", audioDeviceName])
+        
+        do {
+            try SystemAudioSwitcher.setOutputDevice(named: audioDeviceName)
+            print("[\(timestamp)] ✅ Audio output switched successfully.")
+        } catch {
+            print("[\(timestamp)] ❌ Failed to switch audio output: \(error)")
+        }
         
         print("[\(timestamp)] ✅ Switcher operation completed.")
     }

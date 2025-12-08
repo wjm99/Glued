@@ -11,6 +11,8 @@
 		261BE46E2EE1CFA400214DD6 /* AudioMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261BE46D2EE1CFA400214DD6 /* AudioMonitor.swift */; };
 		261BE4702EE1CFD300214DD6 /* Switcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261BE46F2EE1CFD300214DD6 /* Switcher.swift */; };
 		261BE4732EE1D04E00214DD6 /* GluedDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261BE4722EE1D04E00214DD6 /* GluedDevice.swift */; };
+		266D5FCA2EE70E6D00F40CD2 /* BlueUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266D5FC92EE70E6D00F40CD2 /* BlueUtil.swift */; };
+		266D5FCC2EE70ECE00F40CD2 /* AudioSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266D5FCB2EE70ECE00F40CD2 /* AudioSwitcher.swift */; };
 		26BFD7B22EE1AC0900434E90 /* GluedApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BFD7B12EE1AC0900434E90 /* GluedApp.swift */; };
 		26BFD7B42EE1AC0900434E90 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BFD7B32EE1AC0900434E90 /* ContentView.swift */; };
 		26BFD7B62EE1AC0900434E90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26BFD7B52EE1AC0900434E90 /* Assets.xcassets */; };
@@ -24,6 +26,8 @@
 		261BE46D2EE1CFA400214DD6 /* AudioMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioMonitor.swift; sourceTree = "<group>"; };
 		261BE46F2EE1CFD300214DD6 /* Switcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switcher.swift; sourceTree = "<group>"; };
 		261BE4722EE1D04E00214DD6 /* GluedDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GluedDevice.swift; sourceTree = "<group>"; };
+		266D5FC92EE70E6D00F40CD2 /* BlueUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueUtil.swift; sourceTree = "<group>"; };
+		266D5FCB2EE70ECE00F40CD2 /* AudioSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSwitcher.swift; sourceTree = "<group>"; };
 		26BFD7AE2EE1AC0900434E90 /* Glued.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Glued.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26BFD7B12EE1AC0900434E90 /* GluedApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GluedApp.swift; sourceTree = "<group>"; };
 		26BFD7B32EE1AC0900434E90 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -61,6 +65,15 @@
 			path = Storage;
 			sourceTree = "<group>";
 		};
+		266D5FC82EE70E5900F40CD2 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				266D5FC92EE70E6D00F40CD2 /* BlueUtil.swift */,
+				266D5FCB2EE70ECE00F40CD2 /* AudioSwitcher.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		26BFD7A52EE1AC0900434E90 = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +93,7 @@
 		26BFD7B02EE1AC0900434E90 /* Glued */ = {
 			isa = PBXGroup;
 			children = (
+				266D5FC82EE70E5900F40CD2 /* Helpers */,
 				261BE4712EE1D03700214DD6 /* Storage */,
 				261BE4682EE1C34900214DD6 /* Views */,
 				26BFD7C42EE1B83C00434E90 /* View Models */,
@@ -163,6 +177,8 @@
 				Base,
 			);
 			mainGroup = 26BFD7A52EE1AC0900434E90;
+			packageReferences = (
+			);
 			productRefGroup = 26BFD7AF2EE1AC0900434E90 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -190,10 +206,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				261BE4732EE1D04E00214DD6 /* GluedDevice.swift in Sources */,
+				266D5FCA2EE70E6D00F40CD2 /* BlueUtil.swift in Sources */,
 				26BFD7B42EE1AC0900434E90 /* ContentView.swift in Sources */,
 				261BE46A2EE1C38000214DD6 /* DeviceInfoRow.swift in Sources */,
 				261BE4702EE1CFD300214DD6 /* Switcher.swift in Sources */,
 				26BFD7C72EE1B88600434E90 /* DeviceInfoFetcher.swift in Sources */,
+				266D5FCC2EE70ECE00F40CD2 /* AudioSwitcher.swift in Sources */,
 				261BE46E2EE1CFA400214DD6 /* AudioMonitor.swift in Sources */,
 				26BFD7B22EE1AC0900434E90 /* GluedApp.swift in Sources */,
 				26BFD7C92EE1B8BB00434E90 /* DeviceInfo.swift in Sources */,
