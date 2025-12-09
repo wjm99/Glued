@@ -20,7 +20,7 @@ struct GluedApp: App {
     var body: some Scene {
         MenuBarExtra {
             ContentView()
-                .frame(width: 300)
+                .frame(width: 260)
                 .fixedSize(horizontal: true, vertical: false)
         } label: {
             Label("Glued", systemImage: "airpods")
