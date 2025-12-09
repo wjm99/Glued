@@ -8,14 +8,11 @@
 import SwiftUI
 
 struct DeviceInfoRow: View {
-    
-    
     let info : DeviceInfo
     
     var body: some View {
-        HStack{
-            Text(info.name).font(.system(.body, design: .monospaced))
-        }
+        Text(info.name)
+            .font(.body)
     }
 }
 

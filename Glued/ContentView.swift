@@ -16,126 +16,64 @@ struct ContentView: View {
     @State private var hovering: Bool = false
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
+        VStack(alignment: .leading, spacing: 4) {
             // Header
             Button(action: {
                 showDevices.toggle()
             }) {
-                HStack {
-                    Text("🎧 Glued to: \(gluedDevice?.name ?? "No device")")
-                        .font(.system(.title3))
-                        .bold()
-                        .lineLimit(1)
-                        .truncationMode(.tail)
-
-                    Text("›")
-                        .font(.system(.title3))
-                        .bold()
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding()
-                .background(
-                    RoundedRectangle(cornerRadius: 8)
-                        .fill(hovering ? Color.blue.opacity(0.5) : Color.gray.opacity(0.1))
-                )
+                Text("🎧 Glued to: \(gluedDevice?.name ?? "No device")")
+                    .font(.headline)
             }
-            .buttonStyle(PlainButtonStyle())
-            .onHover { isHovering in
-                hovering = isHovering
-                if hovering {
-                    NSCursor.pointingHand.push()
-                } else {
-                    NSCursor.pop()
-                }
-            }
-
-            Divider()
 
             if showDevices {
+                Divider()
+
                 if fetcher.deviceinfos.isEmpty {
-                    // No devices found
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("No Glued earphones found")
-                            .font(.system(.body))
-
-                        Button("Rescan devices") {
-                            Task {
-                                do {
-                                    fetcher.deviceinfos = try await fetcher.getDeviceInfo()
-                                } catch {
-                                    fetcher.error = error
-                                }
-                            }
-                        }
-                    }
-                    .padding()
+                    Text("No Glued earphones found")
+                        .font(.subheadline)
                 } else {
-                    // Connected devices list
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("Connected devices:")
-                            .font(.system(.title3))
-                            .bold()
+                    Text("Connected devices:")
+                        .font(.subheadline)
+                        .bold()
 
-                        List(fetcher.deviceinfos, id: \.address) { info in
+                    ForEach(fetcher.deviceinfos, id: \.address) { info in
+                        Button(action: {
+                            if selectedAddress == info.address {
+                                selectedAddress = nil
+                                GluedDevice.clear()
+                                gluedDevice = nil
+                            } else {
+                                selectedAddress = info.address
+                                GluedDevice.save(from: info)
+                                gluedDevice = GluedDevice.load()
+                            }
+                        }) {
                             HStack {
                                 Text(info.name)
-                                    .font(.title3)
+                                    .font(.body)
 
                                 Spacer()
-                            }
-                            .padding(.vertical, 4)
-                            .padding(.horizontal, 4)
-                            .background(
-                                Group {
-                                    if selectedAddress == info.address {
-                                        RoundedRectangle(cornerRadius: 6)
-                                            .fill(Color.blue.opacity(0.2))
-                                    } else {
-                                        RoundedRectangle(cornerRadius: 6)
-                                            .fill(Color.gray.opacity(0.1))
-                                    }
-                                }
-                            )
-                            .contentShape(Rectangle())
-                            .onTapGesture {
+
                                 if selectedAddress == info.address {
-                                    selectedAddress = nil
-                                    GluedDevice.clear()
-                                    gluedDevice = nil
-                                } else {
-                                    selectedAddress = info.address
-                                    GluedDevice.save(from: info)
-                                    gluedDevice = GluedDevice.load()
-                                }
-                            }
-                            .onHover { hovering in
-                                if hovering {
-                                    NSCursor.pointingHand.push()
-                                } else {
-                                    NSCursor.pop()
+                                    Image(systemName: "checkmark")
+                                        .foregroundColor(.blue)
                                 }
                             }
                         }
-                        .frame(maxHeight: 150) 
                     }
-                    .padding()
                 }
 
                 Divider()
             }
 
             // Quit button
-            HStack {
-                Spacer()
-                Button(action: {
-                    NSApplication.shared.terminate(nil)
-                }) {
-                    Image(systemName: "power")
-                }
-                .keyboardShortcut("q", modifiers: [.command])
-                .padding()
+            Button(action: {
+                NSApplication.shared.terminate(nil)
+            }) {
+                Label("Quit", systemImage: "power")
             }
         }
+        .padding()
         .task {
             gluedDevice = GluedDevice.load()
             if let device = gluedDevice {
