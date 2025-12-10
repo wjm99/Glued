@@ -9,22 +9,38 @@ import SwiftUI
 
 @main
 struct GluedApp: App {
-    
-    /// 保持整个应用生命周期内都存在的监控器
+
     private let audioMonitor = AudioMonitor()
-    
+    private let fetcher = DeviceInfoFetcher()
+
+    @State private var gluedDevice: GluedDevice? = GluedDevice.load()
+    @State private var selectedAddress: String? = GluedDevice.load()?.address
+
     init() {
         audioMonitor.startMonitoring()
+
+        let fetcher = self.fetcher
+        Task { @MainActor in
+            do {
+                fetcher.deviceinfos = try await fetcher.getDeviceInfo()
+            } catch {
+                fetcher.error = error
+                print("getDeviceInfo error: \(error)")
+            }
+        }
     }
-    
+
     var body: some Scene {
         MenuBarExtra {
-            ContentView()
-                .frame(width: 260)
-                .fixedSize(horizontal: true, vertical: false)
+            ContentView(
+                fetcher: fetcher,
+                gluedDevice: $gluedDevice,
+                selectedAddress: $selectedAddress
+            )
         } label: {
             Label("Glued", systemImage: "airpods")
         }
-        .menuBarExtraStyle(.window)
+        .menuBarExtraStyle(.menu)
     }
 }
+
