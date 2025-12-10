@@ -19,11 +19,13 @@ struct ContentView: View {
             // Header
             Text("🎧 Glued to: \(gluedDevice?.name ?? "No device")")
                     .font(.headline)
+                    .lineLimit(1)
+                    .truncationMode(.tail)
 
             Divider()
 
             if fetcher.deviceinfos.isEmpty {
-                Text("No Glued earphones found")
+                Text("No Connected earphones found")
                     .font(.subheadline)
             } else {
                 Text("Connected devices:")
@@ -66,7 +68,6 @@ struct ContentView: View {
                 Label("Quit", systemImage: "power")
             }
         }
-        .padding()
     }
 }
 
