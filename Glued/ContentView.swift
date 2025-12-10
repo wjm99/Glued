@@ -8,63 +8,56 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var fetcher = DeviceInfoFetcher()
+    @ObservedObject var fetcher: DeviceInfoFetcher
+    @Binding var gluedDevice: GluedDevice?
+    @Binding var selectedAddress: String?
 
-    @State private var selectedAddress: String? = nil
-    @State private var gluedDevice: GluedDevice? = nil
     @State private var showDevices: Bool = false
-    @State private var hovering: Bool = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             // Header
-            Button(action: {
-                showDevices.toggle()
-            }) {
-                Text("🎧 Glued to: \(gluedDevice?.name ?? "No device")")
+            Text("🎧 Glued to: \(gluedDevice?.name ?? "No device")")
                     .font(.headline)
-            }
 
-            if showDevices {
-                Divider()
+            Divider()
 
-                if fetcher.deviceinfos.isEmpty {
-                    Text("No Glued earphones found")
-                        .font(.subheadline)
-                } else {
-                    Text("Connected devices:")
-                        .font(.subheadline)
-                        .bold()
+            if fetcher.deviceinfos.isEmpty {
+                Text("No Glued earphones found")
+                    .font(.subheadline)
+            } else {
+                Text("Connected devices:")
+                    .font(.subheadline)
+                    .bold()
 
-                    ForEach(fetcher.deviceinfos, id: \.address) { info in
-                        Button(action: {
+                ForEach(fetcher.deviceinfos, id: \.address) { info in
+                    Button(action: {
+                        if selectedAddress == info.address {
+                            selectedAddress = nil
+                            GluedDevice.clear()
+                            gluedDevice = nil
+                        } else {
+                            selectedAddress = info.address
+                            GluedDevice.save(from: info)
+                            gluedDevice = GluedDevice.load()
+                        }
+                    }) {
+                        HStack {
+                            Text(info.name)
+                                .font(.body)
+
+                            Spacer()
+
                             if selectedAddress == info.address {
-                                selectedAddress = nil
-                                GluedDevice.clear()
-                                gluedDevice = nil
-                            } else {
-                                selectedAddress = info.address
-                                GluedDevice.save(from: info)
-                                gluedDevice = GluedDevice.load()
-                            }
-                        }) {
-                            HStack {
-                                Text(info.name)
-                                    .font(.body)
-
-                                Spacer()
-
-                                if selectedAddress == info.address {
-                                    Image(systemName: "checkmark")
-                                        .foregroundColor(.blue)
-                                }
+                                Image(systemName: "checkmark")
+                                    .foregroundColor(.blue)
                             }
                         }
                     }
                 }
-
-                Divider()
             }
+
+            Divider()
 
             // Quit button
             Button(action: {
@@ -74,23 +67,11 @@ struct ContentView: View {
             }
         }
         .padding()
-        .task {
-            gluedDevice = GluedDevice.load()
-            if let device = gluedDevice {
-                selectedAddress = device.address
-            }
-
-            do {
-                fetcher.deviceinfos = try await fetcher.getDeviceInfo()
-            } catch {
-                fetcher.error = error
-            }
-        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().frame(width: 260)
+        ContentView(fetcher: DeviceInfoFetcher(), gluedDevice: .constant(nil), selectedAddress: .constant(nil)).frame(width: 260)
     }
 }
