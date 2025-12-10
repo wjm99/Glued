@@ -28,6 +28,7 @@
 		261BE4722EE1D04E00214DD6 /* GluedDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GluedDevice.swift; sourceTree = "<group>"; };
 		266D5FC92EE70E6D00F40CD2 /* BlueUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueUtil.swift; sourceTree = "<group>"; };
 		266D5FCB2EE70ECE00F40CD2 /* AudioSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSwitcher.swift; sourceTree = "<group>"; };
+		266D5FCE2EE9BB3500F40CD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		26BFD7AE2EE1AC0900434E90 /* Glued.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Glued.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26BFD7B12EE1AC0900434E90 /* GluedApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GluedApp.swift; sourceTree = "<group>"; };
 		26BFD7B32EE1AC0900434E90 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -93,6 +94,7 @@
 		26BFD7B02EE1AC0900434E90 /* Glued */ = {
 			isa = PBXGroup;
 			children = (
+				266D5FCE2EE9BB3500F40CD2 /* Info.plist */,
 				266D5FC82EE70E5900F40CD2 /* Helpers */,
 				261BE4712EE1D03700214DD6 /* Storage */,
 				261BE4682EE1C34900214DD6 /* Views */,
@@ -346,6 +348,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Glued/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Glued/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -371,6 +374,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Glued/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Glued/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
