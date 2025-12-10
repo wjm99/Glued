@@ -67,6 +67,7 @@ struct ContentView: View {
             }) {
                 Label("Quit", systemImage: "power")
             }
+            .keyboardShortcut("q", modifiers: .command)
         }
     }
 }
