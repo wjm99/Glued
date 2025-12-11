@@ -38,7 +38,7 @@ struct GluedApp: App {
                 selectedAddress: $selectedAddress
             )
         } label: {
-            Label("Glued", systemImage: "airpods")
+            Label("Glued", systemImage: "link.badge.plus")
         }
         .menuBarExtraStyle(.menu)
     }
