@@ -1,8 +1,10 @@
 # Glued
 
-**Glued** is a tiny macOS menu bar app that keeps your AirPods (AirPods Pro, AirPods Max) connected to your Mac **while audio is playing**, and lets macOS auto‑switch normally when audio stops.
+**Glued** is a tiny macOS menu bar app that keeps your AirPods (AirPods Pro, AirPods Max) connected to your Mac **while audio is playing**, and lets macOS auto‑switch normally when audio stops. 
 
 If you’re tired of your AirPods randomly switching to your iPhone or iPad in the middle of work — this is for you.
+
+Glued supports both **Intel** and **Apple Silicon** Macs.
 
 ---
 
