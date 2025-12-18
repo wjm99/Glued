@@ -63,15 +63,6 @@ Please allow it for Glued to work correctly.
 
 ---
 
-## Why Glued?
-
-Apple’s automatic audio switching is great — until it isn’t.
-
-Glued doesn’t replace it.
-It simply adds a bit of control when you actually need your audio to stay put.
-
----
-
 ## Status
 
 Glued is **free** and built as a lightweight personal utility.
