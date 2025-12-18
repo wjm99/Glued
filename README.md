@@ -1,12 +1,15 @@
 # Glued
-👉 Download on Gumroad:
-https://jinming5.gumroad.com/l/glued
 
 **Glued** is a tiny macOS menu bar app that keeps your AirPods (AirPods Pro, AirPods Max) connected to your Mac **while audio is playing**, and lets macOS auto‑switch normally when audio stops. 
 
 If you’re tired of your AirPods randomly switching to your iPhone or iPad in the middle of work — this is for you.
 
 Glued supports both **Intel** and **Apple Silicon** Macs.
+
+👉 Download on Gumroad:
+https://jinming5.gumroad.com/l/glued
+
+<img width="4864" height="2938" alt="MacBook Pro 14" src="https://github.com/user-attachments/assets/0dc98f53-c817-4ded-9fc6-5d3798361e1b" />
 
 ---
 
@@ -17,17 +20,6 @@ Glued supports both **Intel** and **Apple Silicon** Macs.
 * 🎧 Works with AirPods, AirPods Pro and AirPods Max
 * 🧩 Runs quietly in the menu bar
 * ⚡ Lightweight, no background services, no ads
-
----
-
-## How It Works
-
-Glued monitors whether audio is actively playing on your Mac.
-
-* When audio **starts playing** → Glued keeps your chosen Bluetooth device connected
-* When audio **stops** → Glued does nothing and allows Apple’s auto‑switching to work as usual
-
-You stay in control — without fighting the system.
 
 ---
 
