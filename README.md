@@ -1,6 +1,19 @@
-# Glued
+<p align="center"><img width="128" height="128" alt="1" src="https://github.com/user-attachments/assets/b7471931-9e9d-46c2-893a-c69c16850962" /></p>
 
-**Glued** is a tiny macOS menu bar app that keeps your AirPods (AirPods Pro, AirPods Max) connected to your Mac **while audio is playing**, and lets macOS auto‑switch normally when audio stops. 
+
+<h1 align="center">Glued</h1>
+
+<div align="center">
+
+[![Release](https://img.shields.io/github/v/release/wjm99/Glued)](https://github.com/wjm99/Glued/releases)
+![Swift](https://img.shields.io/badge/language-Swift-orange)
+[![Issues](https://img.shields.io/github/issues/wjm99/Glued)](https://github.com/wjm99/Glued/issues)
+
+</div>
+
+
+
+**Glued** is a tiny (2.3MB) macOS menu bar app that keeps your AirPods (AirPods Pro, AirPods Max) connected to Mac **while audio is playing**, and lets macOS auto‑switch normally when audio stops. 
 
 If you’re tired of your AirPods randomly switching to your iPhone or iPad in the middle of work — this is for you.
 
@@ -23,6 +36,15 @@ https://jinming5.gumroad.com/l/glued
 
 ---
 
+## Installation
+
+1. Download the latest release from the **Releases** page
+2. Open `Glued.app`
+3. Grant Bluetooth permission when prompted
+4. Connect your AirPods and select them in Glued
+
+---
+
 ## Permissions
 
 ### Bluetooth Access (Required)
@@ -39,15 +61,6 @@ Please allow it for Glued to work correctly.
 
 ---
 
-## Installation
-
-1. Download the latest release from the **Releases** page
-2. Open `Glued.app`
-3. Grant Bluetooth permission when prompted
-4. Connect your AirPods and select them in Glued
-
----
-
 ## Requirements
 
 * macOS 13(Ventura) or later
@@ -55,9 +68,11 @@ Please allow it for Glued to work correctly.
 
 ---
 
-## Status
+## Acknowledgements
 
-Glued is **free** and built as a lightweight personal utility.
-Feedback and pull requests are welcome.
+This project is inspired by [blueutil](https://github.com/toy/blueutil) and [switchaudio](https://github.com/deweller/switchaudio-osx).
 
----
+It also makes use of the following Apple frameworks:
+- CoreAudio
+- IOBluetooth
+- AudioToolbox
