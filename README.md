@@ -11,7 +11,7 @@
 
 </div>
 
-
+**Glued** is designed to solve the one-way AirPods connection issue between macOS and iOS devices.
 
 **Glued** is a tiny (2.3MB) macOS menu bar app that keeps your AirPods (AirPods Pro, AirPods Max) connected to Mac **while audio is playing**, and lets macOS auto‑switch normally when audio stops. 
 
