@@ -19,9 +19,6 @@ If you’re tired of your AirPods randomly switching to your iPhone or iPad in t
 
 Glued supports both **Intel** and **Apple Silicon** Macs.
 
-👉 Download on Gumroad:
-https://jinming5.gumroad.com/l/glued
-
 <img width="4864" height="2938" alt="MacBook Pro 14" src="https://github.com/user-attachments/assets/0dc98f53-c817-4ded-9fc6-5d3798361e1b" />
 
 ---
@@ -38,7 +35,7 @@ https://jinming5.gumroad.com/l/glued
 
 ## Installation
 
-1. Download the latest release from the **Releases** page
+1. Download the latest release from the **[Releases](https://github.com/wjm99/Glued/releases/download/1.0/Glued.1.0.dmg)** page.
 2. Open `Glued.app`
 3. Grant Bluetooth permission when prompted
 4. Connect your AirPods and select them in Glued
