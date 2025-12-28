@@ -5,7 +5,7 @@
 
 <div align="center">
 
-[![Release](https://img.shields.io/github/v/release/wjm99/Glued)](https://github.com/wjm99/Glued/releases)
+[![Release](https://img.shields.io/github/v/release/wjm99/Glued)](https://github.com/wjm99/Glued/releases/tag/1.0)
 ![Swift](https://img.shields.io/badge/language-Swift-orange)
 [![Issues](https://img.shields.io/github/issues/wjm99/Glued)](https://github.com/wjm99/Glued/issues)
 
