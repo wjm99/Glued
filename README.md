@@ -44,7 +44,7 @@ Glued provides different builds depending on your macOS version:
 
 
 * **macOS 11.0 – 12.x (Big Sur / Monterey)**  
-  👉 Download **[Glued 11.0 build](https://github.com/wjm99/Glued/releases/tag/11.0)** (preview release)  
+  👉 Download **[Glued 11.0](https://github.com/wjm99/Glued/releases/tag/11.0)** (preview release)  
 
 ### 2. Install and run
 
