@@ -35,10 +35,24 @@ Glued supports both **Intel** and **Apple Silicon** Macs.
 
 ## Installation
 
-1. Download the latest release from the **[Releases](https://github.com/wjm99/Glued/releases/download/1.0/Glued.1.0.dmg)** page.
-2. Open `Glued.app`
+### 1. Choose the correct version
+
+Glued provides different builds depending on your macOS version:
+
+* **macOS 13.0 (Ventura) or later**  
+  👉 Download **[Glued 1.0](https://github.com/wjm99/Glued/releases/tag/1.0)** (recommended for most users)
+
+
+* **macOS 11.0 – 12.x (Big Sur / Monterey)**  
+  👉 Download **[Glued 11.0 build](https://github.com/wjm99/Glued/releases/tag/11.0)** (preview release)  
+
+### 2. Install and run
+
+1. Download the `.dmg` from the link above
+2. Open **Glued.app**
 3. Grant Bluetooth permission when prompted
 4. Connect your AirPods and select them in Glued
+
 
 ---
 
@@ -60,7 +74,7 @@ Please allow it for Glued to work correctly.
 
 ## Requirements
 
-* macOS 13(Ventura) or later
+* macOS 11(Big Sur) or later
 * Bluetooth audio device (AirPods, AirPods Pro, AirPods Max)
 
 ---
